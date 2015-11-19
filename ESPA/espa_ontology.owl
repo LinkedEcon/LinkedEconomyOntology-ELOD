@@ -1,0 +1,502 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://linkedeconomy.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://linkedeconomy.org/ontology">
+    <Prefix name="" IRI="http://linkedeconomy.org/ontology#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="gr" IRI="http://purl.org/goodrelations/v1#"/>
+    <Prefix name="pc" IRI="http://purl.org/procurement/public-contracts#"/>
+    <Prefix name="org" IRI="http://www.w3.org/ns/org#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rov" IRI="http://www.w3.org/ns/regorg#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="elod" IRI="http://linkedeconomy.org/ontology#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="skos" IRI="http://www.w3.org/2004/02/skos/core#"/>
+    <Prefix name="elodGeo" IRI="http://linkedeconomy.org/geoOntology#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Linked Economy</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="#creator"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Gerasimos Razis</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="#creator"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Michalis Vafopoulos</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Latest Update: 2015-09-08</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="foaf:homepage"/>
+        <IRI>http://linkedeconomy.org/</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Linked Economy Ontology</Literal>
+    </Annotation>
+    <Declaration>
+        <Class abbreviatedIRI="elodGeo:Country"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="elodGeo:Municipality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BudgetItem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Currency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExpenditureLine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProjectStatus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpendingItem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Subsidy"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gr:BusinessEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gr:UnitPriceSpecification"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="pc:Contract"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="org:Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="rov:RegisteredOrganization"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="foaf:Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="foaf:Organization"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#amount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#beneficiary"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCurrency"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasExpenditureLine"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRelatedBudgetItem"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRelatedContract"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRelatedSpendingItem"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#price"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#projectStatus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#subsidyMunicipality"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pc:agreedPrice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#countryIsoCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#currencyIsoCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="dc:subject"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="gr:hasCurrencyValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="gr:name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="gr:valueAddedTaxIncluded"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://linkedeconomy.org/resource/ProjectStatus/Completed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://linkedeconomy.org/resource/ProjectStatus/Contracted"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="skos:inScheme"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="skos:prefLabel"/>
+    </Declaration>
+    <Declaration>
+        <Datatype IRI="http://purl.org/procurement/public-contracts-datatypes#percentage"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:gYear"/>
+    </Declaration>
+    <SubClassOf>
+        <Class abbreviatedIRI="elodGeo:Country"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Currency"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProjectStatus"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="gr:BusinessEntity"/>
+        <Class abbreviatedIRI="foaf:Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="org:Organization"/>
+        <Class abbreviatedIRI="foaf:Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="rov:RegisteredOrganization"/>
+        <Class abbreviatedIRI="foaf:Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="foaf:Organization"/>
+        <Class abbreviatedIRI="foaf:Agent"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#ProjectStatus"/>
+        <NamedIndividual IRI="http://linkedeconomy.org/resource/ProjectStatus/Completed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProjectStatus"/>
+        <NamedIndividual IRI="http://linkedeconomy.org/resource/ProjectStatus/Contracted"/>
+    </ClassAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#amount"/>
+        <Class IRI="#ExpenditureLine"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#beneficiary"/>
+        <ObjectUnionOf>
+            <Class IRI="#BudgetItem"/>
+            <Class IRI="#SpendingItem"/>
+            <Class IRI="#Subsidy"/>
+            <Class abbreviatedIRI="pc:Contract"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCurrency"/>
+        <Class abbreviatedIRI="gr:UnitPriceSpecification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasExpenditureLine"/>
+        <Class IRI="#SpendingItem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRelatedBudgetItem"/>
+        <Class IRI="#Subsidy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRelatedContract"/>
+        <Class IRI="#Subsidy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRelatedSpendingItem"/>
+        <Class IRI="#Subsidy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#price"/>
+        <Class IRI="#BudgetItem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#projectStatus"/>
+        <Class IRI="#Subsidy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#subsidyMunicipality"/>
+        <Class IRI="#Subsidy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="pc:agreedPrice"/>
+        <Class abbreviatedIRI="pc:Contract"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#amount"/>
+        <Class abbreviatedIRI="gr:UnitPriceSpecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#beneficiary"/>
+        <ObjectUnionOf>
+            <Class abbreviatedIRI="gr:BusinessEntity"/>
+            <Class abbreviatedIRI="rov:RegisteredOrganization"/>
+            <Class abbreviatedIRI="foaf:Organization"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCurrency"/>
+        <Class IRI="#Currency"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasExpenditureLine"/>
+        <Class IRI="#ExpenditureLine"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRelatedBudgetItem"/>
+        <Class IRI="#BudgetItem"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRelatedContract"/>
+        <Class abbreviatedIRI="pc:Contract"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRelatedSpendingItem"/>
+        <Class IRI="#SpendingItem"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#price"/>
+        <Class abbreviatedIRI="gr:UnitPriceSpecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#projectStatus"/>
+        <Class IRI="#ProjectStatus"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#subsidyMunicipality"/>
+        <Class abbreviatedIRI="elodGeo:Municipality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="pc:agreedPrice"/>
+        <Class abbreviatedIRI="gr:UnitPriceSpecification"/>
+    </ObjectPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#countryIsoCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#currencyIsoCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="dc:subject"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="gr:hasCurrencyValue"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="gr:name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="gr:valueAddedTaxIncluded"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>elodGeo:Country</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Country</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>elodGeo:Country</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Χώρα</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BudgetItem</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Budget Item</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BudgetItem</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Αντικείμενο Προϋπολογισμού</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Currency</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Currency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Currency</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Νόμισμα</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExpenditureLine</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Expenditure Line</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExpenditureLine</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Τμήμα Δαπάνης</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProjectStatus</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Project Status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProjectStatus</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Κατάσταση έργου</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpendingItem</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Spending Item</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpendingItem</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Αντικείμενο Δαπάνης</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Subsidy</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Subsidy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Subsidy</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Επιδότηση</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="skos:prefLabel"/>
+        <IRI>http://linkedeconomy.org/resource/ProjectStatus/Completed</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Completed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="skos:prefLabel"/>
+        <IRI>http://linkedeconomy.org/resource/ProjectStatus/Completed</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Ολοκληρωμένο</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="skos:prefLabel"/>
+        <IRI>http://linkedeconomy.org/resource/ProjectStatus/Contracted</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Contracted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="skos:prefLabel"/>
+        <IRI>http://linkedeconomy.org/resource/ProjectStatus/Contracted</IRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Συμβασιοποιημένο</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gr:BusinessEntity</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Business Entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gr:BusinessEntity</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Επιχειρηματική Οντότητα</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gr:UnitPriceSpecification</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Unit Price Specification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gr:UnitPriceSpecification</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Προδιαγραφή τιμής ανά μονάδα</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>pc:Contract</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Public Contract</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>pc:Contract</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Δημόσια Σύμβαση</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>org:Organization</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Organization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>org:Organization</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Οργανισμός</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rov:RegisteredOrganization</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Registered Organization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rov:RegisteredOrganization</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Καταχωρημένος Οργανισμός</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>foaf:Agent</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>foaf:Agent</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Πράκτορας</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>foaf:Organization</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Organization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>foaf:Organization</AbbreviatedIRI>
+        <Literal xml:lang="el" datatypeIRI="&rdf;PlainLiteral">Οργανισμός</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
