@@ -1,0 +1,624 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY regOrg "http://www.w3.org/ns/regorg#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY ontology "http://linkedeconomy.org/ontology#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY pc "http://purl.org/procurement/public-contracts#" >
+    <!ENTITY authkinds "http://purl.org/procurement/public-contracts-authority-kinds#" >
+]>
+
+
+<rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
+     xml:base="http://linkedeconomy.org/ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:authkinds="http://purl.org/procurement/public-contracts-authority-kinds#"
+     xmlns:regOrg="http://www.w3.org/ns/regorg#"
+     xmlns:pc="http://purl.org/procurement/public-contracts#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://linkedeconomy.org/ontology#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
+        <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <creator xml:lang="en">Andreas Maragudakis</creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2015-10-18</owl:versionInfo>
+        <dc:title xml:lang="en">Linked Economy Ontology (City of Chicago)</dc:title>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#creator -->
+
+    <owl:AnnotationProperty rdf:about="&ontology;creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#broader -->
+
+    <owl:AnnotationProperty rdf:about="&skos;broader"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
+
+    <owl:AnnotationProperty rdf:about="&skos;hasTopConcept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:AnnotationProperty rdf:about="&skos;inScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#narrower -->
+
+    <owl:AnnotationProperty rdf:about="&skos;narrower"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel">
+        <rdfs:domain rdf:resource="_:genid8"/>
+        <rdfs:domain rdf:resource="&ontology;OrganizationCategory"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#topConceptOf -->
+
+    <owl:AnnotationProperty rdf:about="&skos;topConceptOf"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/homepage -->
+
+    <owl:AnnotationProperty rdf:about="&foaf;homepage"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#amount -->
+
+    <owl:ObjectProperty rdf:about="&ontology;amount">
+        <rdfs:domain rdf:resource="&ontology;ExpenditureLine"/>
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#buyer -->
+
+    <owl:ObjectProperty rdf:about="&ontology;buyer">
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasCurrency -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasCurrency">
+        <rdfs:range rdf:resource="&ontology;Currency"/>
+        <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasExpenditureLine -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasExpenditureLine">
+        <rdfs:range rdf:resource="&ontology;ExpenditureLine"/>
+        <rdfs:domain rdf:resource="&ontology;SpendingItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasRelatedContract -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasRelatedContract">
+        <rdfs:domain rdf:resource="&ontology;SpendingItem"/>
+        <rdfs:range rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#orderDescription -->
+
+    <owl:ObjectProperty rdf:about="&ontology;orderDescription">
+        <rdfs:range rdf:resource="&ontology;OrderDescription"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#procurementType -->
+
+    <owl:ObjectProperty rdf:about="&ontology;procurementType">
+        <rdfs:range rdf:resource="&ontology;ProcurementType"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#seller -->
+
+    <owl:ObjectProperty rdf:about="&ontology;seller">
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;ExpenditureLine"/>
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#includesObject -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/goodrelations/v1#includesObject">
+        <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+        <rdfs:range rdf:resource="&pc;TypeAndQuantityNode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#typeOfGood -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/goodrelations/v1#typeOfGood">
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#SomeItems"/>
+        <rdfs:domain rdf:resource="&pc;TypeAndQuantityNode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#actualPrice -->
+
+    <owl:ObjectProperty rdf:about="&pc;actualPrice">
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#item -->
+
+    <owl:ObjectProperty rdf:about="&pc;item">
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#hasAddress -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/vcard/ns#hasAddress">
+        <rdfs:range rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#contractId -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;contractId">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#documentURL -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;documentURL">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#expenditureId -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;expenditureId">
+        <rdfs:domain rdf:resource="&ontology;ExpenditureLine"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#organizationId -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;organizationId">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#submissionTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;submissionTimestamp">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#description -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#description">
+        <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#SomeItems"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#hasCurrencyValue">
+        <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#legalName -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#legalName">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#name -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#name">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#valueAddedTaxIncluded -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#valueAddedTaxIncluded">
+        <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#estimatedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;estimatedEndDate">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#startDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;startDate">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;OrderDescription"/>
+                    <rdf:Description rdf:about="&ontology;ProcurementType"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#locality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#locality">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#postal-code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#postal-code">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#region -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#region">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#street-address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#street-address">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#Currency -->
+
+    <owl:Class rdf:about="&ontology;Currency">
+        <rdfs:label xml:lang="el">Νόμισμα</rdfs:label>
+        <rdfs:label xml:lang="en">Currency</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#ExpenditureLine -->
+
+    <owl:Class rdf:about="&ontology;ExpenditureLine">
+        <rdfs:label xml:lang="el">Τμήμα Δαπάνης</rdfs:label>
+        <rdfs:label xml:lang="en">Expenditure Line</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#OrderDescription -->
+
+    <owl:Class rdf:about="&ontology;OrderDescription">
+        <rdfs:label xml:lang="el">Περιγραφή Παραγγελίας</rdfs:label>
+        <rdfs:label xml:lang="en">Order Description</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#ProcurementType -->
+
+    <owl:Class rdf:about="&ontology;ProcurementType">
+        <rdfs:label xml:lang="el">Τύπος Προμήθειας</rdfs:label>
+        <rdfs:label xml:lang="en">Procurement Type</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#SpendingItem -->
+
+    <owl:Class rdf:about="&ontology;SpendingItem">
+        <rdfs:label xml:lang="el">Αντικείμενο Δαπάνης</rdfs:label>
+        <rdfs:label xml:lang="en">Spending Item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://publicspending.net/geoOntology#Country -->
+
+    <owl:Class rdf:about="http://publicspending.net/geoOntology#Country">
+        <rdfs:label xml:lang="el">Χώρα</rdfs:label>
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#BusinessEntity -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity">
+        <rdfs:label xml:lang="el">Επιχειρηματική Οντότητα</rdfs:label>
+        <rdfs:label xml:lang="en">Business Entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#Offering -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#Offering">
+        <rdfs:label xml:lang="el">Αντικείμενα</rdfs:label>
+        <rdfs:label xml:lang="en">Offering</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#SomeItems -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#SomeItems">
+        <rdfs:label xml:lang="el">Αντικείμενο</rdfs:label>
+        <rdfs:label xml:lang="en">Some Items</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#UnitPriceSpecification -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#UnitPriceSpecification">
+        <rdfs:label xml:lang="el">Προδιαγραφή τιμής ανά μονάδα</rdfs:label>
+        <rdfs:label xml:lang="en">Unit Price Specification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Contract -->
+
+    <owl:Class rdf:about="&pc;Contract"/>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#TypeAndQuantityNode -->
+
+    <owl:Class rdf:about="&pc;TypeAndQuantityNode">
+        <rdfs:label xml:lang="el">Είδος και Ποιότητα</rdfs:label>
+        <rdfs:label xml:lang="en">Type ans Quantity Node</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="&skos;Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="&skos;ConceptScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#Address -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/vcard/ns#Address">
+        <rdfs:label xml:lang="el">Διεύθυνση</rdfs:label>
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/org#Organization -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/org#Organization">
+        <rdfs:label xml:lang="el">Οργανισμός</rdfs:label>
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/regorg#RegisteredOrganization -->
+
+    <owl:Class rdf:about="&regOrg;RegisteredOrganization">
+        <rdfs:label xml:lang="el">Καταχωρημένος Οργανισμός</rdfs:label>
+        <rdfs:label xml:lang="en">Registered Organization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent">
+        <rdfs:label xml:lang="el">Πράκτορας</rdfs:label>
+        <rdfs:label xml:lang="en">Agent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="&foaf;Organization">
+        <rdfs:label xml:lang="el">Οργανισμός</rdfs:label>
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
