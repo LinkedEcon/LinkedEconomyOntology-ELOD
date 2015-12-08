@@ -1,0 +1,35 @@
+
+Παραδείγματα SPARQL Queries (περισσότερα στο Cookbook Diavgeia.docx)
+
+Στοιχεία Οριστικοποίησης Πληρωμής (Β.2.2)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?ada ?date ?buyer (SAMPLE(?buyerLegalName) AS ?buyerLegalName) ?buyerAfm ?seller (SAMPLE(?sellerLegalName) AS ?sellerLegalName) ?sellerAfm (xsd:decimal(?amount) AS ?paymentAmount) ?subject ?themCat ?cpv
+FROM <http://linkedeconomy.org/DiavgeiaII/2015>
+FROM <http://linkedeconomy.org/Organizations>
+WHERE {
+<http://linkedeconomy.org/resource/SpendingItem/ΩΚΔ8465ΦΘΕ-Η2Δ> elod:hasExpenditureLine ?expLine ;
+         elod:ada ?ada ;
+         dcterms:issued ?date ;
+         dc:subject ?subject ;
+         elod:hasThematicCategory ?thematicCategory ;
+         elod:buyer ?buyer .
+#expLine
+?expLine elod:seller ?seller ;
+         elod:amount ?ups ;
+         elod:hasCpv ?cpv .
+#ups
+?ups gr:hasCurrencyValue ?amount .
+#buyer
+?buyer gr:vatID ?buyerAfm ;
+       gr:legalName ?buyerLegalName .
+#seller
+?seller gr:vatID ?sellerAfm ;
+        gr:legalName ?sellerLegalName .
+#?thematicCategory
+?thematicCategory skos:prefLabel ?themCat .
+}
