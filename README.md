@@ -1,4 +1,4 @@
-# LinkedEconomyOntology-ELOD
+# LinkedEconomyOntology (e-LOD)
 
 # Introduction
 
