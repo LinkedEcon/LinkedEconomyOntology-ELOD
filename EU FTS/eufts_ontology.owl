@@ -3,6 +3,7 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY dcterms "http://purl.org/dc/terms#" >
+    <!ENTITY terms "http://purl.org/dc/terms/" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
@@ -21,6 +22,7 @@
      xml:base="http://linkedeconomy.org/ontology"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ontology="http://linkedeconomy.org/ontology#"
      xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
      xmlns:dcterms="http://purl.org/dc/terms#"
@@ -33,10 +35,10 @@
      xmlns:skos="http://www.w3.org/2004/02/skos/core#">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
-        <creator xml:lang="en">Andreas Maragudakis</creator>
-        <creator xml:lang="en">Gerasimos Razis</creator>
-        <owl:versionInfo xml:lang="en">Latest Update: 2015-07-21</owl:versionInfo>
-        <dc:title xml:lang="en">Linked Economy Ontology (Financial Transparency System)</dc:title>
+        <terms:creator xml:lang="en">Andreas Maragudakis</terms:creator>
+        <terms:creator xml:lang="en">Gerasimos Razis</terms:creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2018-02-01</owl:versionInfo>
+        <dc:title xml:lang="en">Linked Economy Ontology (European Union - Financial Transparency System)</dc:title>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
     </owl:Ontology>
     
@@ -53,51 +55,15 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#creator -->
-
-    <owl:AnnotationProperty rdf:about="&ontology;creator"/>
-    
-
-
     <!-- http://purl.org/dc/elements/1.1/title -->
 
     <owl:AnnotationProperty rdf:about="&dc;title"/>
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#broader -->
+    <!-- http://purl.org/dc/terms/creator -->
 
-    <owl:AnnotationProperty rdf:about="&skos;broader"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
-
-    <owl:AnnotationProperty rdf:about="&skos;hasTopConcept"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
-
-    <owl:AnnotationProperty rdf:about="&skos;inScheme"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#narrower -->
-
-    <owl:AnnotationProperty rdf:about="&skos;narrower"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
-
-    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#topConceptOf -->
-
-    <owl:AnnotationProperty rdf:about="&skos;topConceptOf"/>
+    <owl:AnnotationProperty rdf:about="&terms;creator"/>
     
 
 
@@ -160,6 +126,24 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasActiontype -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasActiontype">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasBudgetLine -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasBudgetLine">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasCurrency -->
 
     <owl:ObjectProperty rdf:about="&ontology;hasCurrency">
@@ -174,6 +158,15 @@
     <owl:ObjectProperty rdf:about="&ontology;hasExpenditureLine">
         <rdfs:range rdf:resource="&ontology;ExpenditureLine"/>
         <rdfs:domain rdf:resource="&ontology;SpendingItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasFundingType -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasFundingType">
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
     </owl:ObjectProperty>
     
 
@@ -240,6 +233,33 @@
     
 
 
+    <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
+
+    <owl:ObjectProperty rdf:about="&skos;hasTopConcept">
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:ObjectProperty rdf:about="&skos;inScheme">
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#topConceptOf -->
+
+    <owl:ObjectProperty rdf:about="&skos;topConceptOf">
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.w3.org/2006/vcard/ns#hasAddress -->
 
     <owl:ObjectProperty rdf:about="&vcard;hasAddress">
@@ -289,7 +309,7 @@
 
     <!-- http://purl.org/dc/terms/issued -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/issued">
+    <owl:DatatypeProperty rdf:about="&terms;issued">
         <rdfs:domain rdf:resource="&pc;Contract"/>
         <rdfs:range rdf:resource="&xsd;date"/>
     </owl:DatatypeProperty>
@@ -318,16 +338,6 @@
 
     <owl:DatatypeProperty rdf:about="&gr;legalName">
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
-                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;#Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -355,6 +365,24 @@
     <owl:DatatypeProperty rdf:about="&gr;vatID">
         <rdfs:range rdf:resource="&xsd;string"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+    <owl:DatatypeProperty rdf:about="&skos;notation">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
     </owl:DatatypeProperty>
     
 
@@ -530,12 +558,6 @@
     
 
 
-    <!-- http://www.w3.org/ns/org#OrganizationalUnit -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
-    
-
-
     <!-- http://www.w3.org/ns/regorg#RegisteredOrganization -->
 
     <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization">
@@ -575,26 +597,44 @@
     
 
 
-    <!-- http://xmlns.com/foaf/0.1/#Organization -->
-
-    <owl:Class rdf:about="&foaf;#Organization"/>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotations
+    // Individuals
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="&xsd;dateTime">
-        <skos:prefLabel xml:lang="el">Ανοικτός Διαγωνισμός</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Open</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
-    </rdf:Description>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#ActionTypeScheme -->
+
+    <owl:NamedIndividual rdf:about="&ontology;ActionTypeScheme">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:label xml:lang="el">Τύπος Δράσης</rdfs:label>
+        <rdfs:label xml:lang="en">Action Type Scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#BudgetLineScheme -->
+
+    <owl:NamedIndividual rdf:about="&ontology;BudgetLineScheme">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:label xml:lang="el">Κονδύλι Προϋπολογισμού</rdfs:label>
+        <rdfs:label xml:lang="en">Budget Line Scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#FundingTypeScheme -->
+
+    <owl:NamedIndividual rdf:about="&ontology;FundingTypeScheme">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:label xml:lang="el">Τύπος Χρηματοδότησης</rdfs:label>
+        <rdfs:label xml:lang="en">Funding Type Scheme</rdfs:label>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
