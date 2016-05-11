@@ -58,7 +58,7 @@
     <owl:ObjectProperty rdf:about="&elod;hasProductCategory">
         <rdfs:label xml:lang="en">has Product Category</rdfs:label>
         <rdfs:comment xml:lang="el">Ορίζει τη σύνδεση ενός στιγμιότυπου  της κλάσης gr:SomeItems με στιγμιότυπα της κλάσης elod:Category όπου αναπαριστούν την κατηγορία των προϊόντων.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;Category"/>
+        <rdfs:range rdf:resource="&elod;ProductCategory"/>
         <rdfs:domain rdf:resource="&gr;SomeItems"/>
     </owl:ObjectProperty>
     
@@ -135,8 +135,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;categoryId">
         <rdfs:label xml:lang="en">category id</rdfs:label>
-        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή ορίζει τον κωδικό της κατηγορίας του προϊόντος(elod:Category).</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Category"/>
+        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή ορίζει τον κωδικό της κατηγορίας του προϊόντος(elod:ProductCategory).</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;ProductCategory"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -235,7 +235,6 @@
     <owl:DatatypeProperty rdf:about="&elod;quantityOfGood">
         <rdfs:label xml:lang="en">quantity of good</rdfs:label>
         <rdfs:comment xml:lang="el">The quantity of the goods included in a elod:Statistic Class which refers to a gr:Offering Class. Η ποσότητα των αγαθών που είναι διαθέσιμα. Επίσης συνδέει αυτή τη τιμή με την κλάση elod:Statistic η οποία αναπαριστά της συνολική πληροφορία στατιστικών για μία προσφορά.</rdfs:comment>
-        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή ορίζει τον κωδικό της κατηγορίας του προϊόντος(elod:Category).</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Statistic"/>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
@@ -346,7 +345,7 @@
     <owl:DatatypeProperty rdf:about="&gr;name">
         <rdfs:label xml:lang="en">name</rdfs:label>
         <rdfs:comment xml:lang="el">Ορίζει την ονομασία μιας πηγής.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Category"/>
+        <rdfs:domain rdf:resource="&elod;ProductCategory"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -383,10 +382,10 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#Category -->
+    <!-- http://linkedeconomy.org/ontology#ProductCategory -->
 
-    <owl:Class rdf:about="&elod;Category">
-        <rdfs:label xml:lang="en">Category</rdfs:label>
+    <owl:Class rdf:about="&elod;ProductCategory">
+        <rdfs:label xml:lang="en">Product Category</rdfs:label>
         <rdfs:comment xml:lang="el">Κάθε στιγμιότυπο αυτής της κλάσης αναπαριστά την κατηγορία ενός προϊόντος.</rdfs:comment>
     </owl:Class>
     
