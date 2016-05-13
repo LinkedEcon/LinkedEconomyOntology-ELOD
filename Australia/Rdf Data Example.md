@@ -24,7 +24,7 @@
 		vcard:country-name <http://linkedeconomy.org/resource/AU> .
 
 	<http://linkedeconomy.org/resource/AU> a skos:Concept, elodGeo:Country;
-		skos:prefLabel "Αυστραλία"@el, "Australia"@en .
+		skos:prefLabel "Ξ‘Ο…ΟƒΟ„ΟΞ±Ξ»Ξ―Ξ±"@el, "Australia"@en .
 
 <http://linkedeconomy.org/resource/ExpenditudeLine/CN6915_A14> a elod:ExpenditureLine;
 	elod:amount <http://linkedeconomy.org/resource/UnitPriceSpecification/CN6915-A14> ;
@@ -37,7 +37,7 @@
 
 		<http://linkedeconomy.org/resource/Currency/AUD> a skos:Concept, elod:Currency ;
 			elod:currencyIsoCode "AUD"^^xsd:string ;
-			skos:prefLabel "Δολάριο Αυστραλίας"@el, "Australian dollar"@en .
+			skos:prefLabel "Ξ”ΞΏΞ»Ξ¬ΟΞΉΞΏ Ξ‘Ο…ΟƒΟ„ΟΞ±Ξ»Ξ―Ξ±Ο‚"@el, "Australian dollar"@en .
 
 	<http://linkedeconomy.org/resource/Organization/18002855085> a foaf:Organization, gr:BusinessEntity, org:Organization, rov:RegisteredOrganization ;
 		gr:name "HP ENTERPRISE SERVICES AYSTRALIA PTY LTD"^^xsd:string ;
@@ -80,7 +80,7 @@
 	<http://purl.org/procurement/public-contracts#Open> a skos:Concept;
 		skos:inScheme pc:ProcedureTypeScheme ;
 		skos:topConceptOf pc:ProcedureTypeScheme ;
-		skos:prefLabel "Ανοικτός Διαγωνισμός"@el, "Open"@en .
+		skos:prefLabel "Ξ‘Ξ½ΞΏΞΉΞΊΟ„ΟΟ‚ Ξ”ΞΉΞ±Ξ³Ο‰Ξ½ΞΉΟƒΞΌΟΟ‚"@el, "Open"@en .
 
 		<http://purl.org/procurement/public-contracts#ProcedureTypeScheme> a skos:ConceptScheme ;	
 			skos:hasTopConcept pc:Open ;
