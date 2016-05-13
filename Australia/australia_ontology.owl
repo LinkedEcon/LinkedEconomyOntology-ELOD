@@ -27,9 +27,10 @@
      xmlns:skos="http://www.w3.org/2004/02/skos/core#">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
-        <creator xml:lang="en">Andreas Maragudakis</creator>
+        <creator xml:lang="en">Aggelos Tzani</creator>
         <creator xml:lang="en">Gerasimos Razis</creator>
-        <owl:versionInfo xml:lang="en">Latest Update: 2015-07-23</owl:versionInfo>
+        <creator xml:lang="en">Mixalis Vafopoulos</creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-05-13</owl:versionInfo>
         <dc:title xml:lang="en">Linked Economy Ontology (Australia)</dc:title>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
     </owl:Ontology>
@@ -59,12 +60,6 @@
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#broader -->
-
-    <owl:AnnotationProperty rdf:about="&skos;broader"/>
-    
-
-
     <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
 
     <owl:AnnotationProperty rdf:about="&skos;hasTopConcept"/>
@@ -74,12 +69,6 @@
     <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
 
     <owl:AnnotationProperty rdf:about="&skos;inScheme"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#narrower -->
-
-    <owl:AnnotationProperty rdf:about="&skos;narrower"/>
     
 
 
@@ -158,6 +147,7 @@
 
     <owl:ObjectProperty rdf:about="&ontology;contact">
         <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&foaf;#Person"/>
     </owl:ObjectProperty>
     
 
@@ -189,11 +179,61 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasSupervisorOrganization -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasSupervisorOrganization">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasUNSPSC -->
 
     <owl:ObjectProperty rdf:about="&ontology;hasUNSPSC">
         <rdfs:range rdf:resource="&ontology;UNSPSC"/>
         <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#SomeItems"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#isSupervisorOrganizationOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isSupervisorOrganizationOf">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -280,24 +320,6 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#amendmentDate -->
-
-    <owl:DatatypeProperty rdf:about="&ontology;amendmentDate">
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&xsd;date"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#amendmentReason -->
-
-    <owl:DatatypeProperty rdf:about="&ontology;amendmentReason">
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#branch -->
 
     <owl:DatatypeProperty rdf:about="&ontology;branch">
@@ -308,38 +330,6 @@
                     <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
                     <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
                     <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#contractDescriptionCode -->
-
-    <owl:DatatypeProperty rdf:about="&ontology;contractDescriptionCode">
-        <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&ontology;ExpenditureLine"/>
-                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#SomeItems"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#contractDescriptionLiteral -->
-
-    <owl:DatatypeProperty rdf:about="&ontology;contractDescriptionLiteral">
-        <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&ontology;ExpenditureLine"/>
-                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#SomeItems"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -370,15 +360,6 @@
     <owl:DatatypeProperty rdf:about="&ontology;organizationId">
         <rdfs:range rdf:resource="&xsd;string"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#publicationDate -->
-
-    <owl:DatatypeProperty rdf:about="&ontology;publicationDate">
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -445,20 +426,28 @@
     
 
 
-    <!-- http://purl.org/goodrelations/v1#name -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#name">
-        <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="&foaf;Agent"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://purl.org/goodrelations/v1#valueAddedTaxIncluded -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#valueAddedTaxIncluded">
         <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#vatID -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#vatID">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -521,7 +510,7 @@
 
     <owl:DatatypeProperty rdf:about="&foaf;name">
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="&foaf;#Person"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:DatatypeProperty>
     
 
@@ -642,7 +631,7 @@
 
     <owl:Class rdf:about="&pc;TypeAndQuantityNode">
         <rdfs:label xml:lang="el">Είδος και Ποιότητα</rdfs:label>
-        <rdfs:label xml:lang="en">Type ans Quantity Node</rdfs:label>
+        <rdfs:label xml:lang="en">Type and Quantity Node</rdfs:label>
     </owl:Class>
     
 
@@ -728,100 +717,22 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#DirectAward -->
-
-    <owl:NamedIndividual rdf:about="&ontology;DirectAward">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Απευθείας Ανάθεση</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Direct Award</skos:prefLabel>
-        <skos:narrower rdf:resource="&ontology;DirectAwardNoPublication"/>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#DirectAwardNoPublication -->
-
-    <owl:NamedIndividual rdf:about="&ontology;DirectAwardNoPublication">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Ανάθεση Σύμβασης άνευ προκαταρικής δημοσίευσης προκήρυξης διαγωνισμού στην Επίσημη Εφημερίδα της Ευρωπαικής Ένωσης</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Direct Award - No Publication</skos:prefLabel>
-        <skos:broader rdf:resource="&ontology;DirectAward"/>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#LowValue -->
-
-    <owl:NamedIndividual rdf:about="&ontology;LowValue">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Πρόχειρος Διαγωνισμός</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Low Value</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#Prequalified -->
 
     <owl:NamedIndividual rdf:about="&ontology;Prequalified">
         <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Συμφωνίες Πλαίσιο</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">Συμφωνίες Πλαισίου</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Prequalified</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/procurement/public-contracts#AcceleratedNegotiated -->
-
-    <owl:NamedIndividual rdf:about="&pc;AcceleratedNegotiated">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Επισπευσμένος με διαδικασία</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Accelerated Negotiated</skos:prefLabel>
-        <skos:broader rdf:resource="&pc;Negotiated"/>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/procurement/public-contracts#AcceleratedRestricted -->
-
-    <owl:NamedIndividual rdf:about="&pc;AcceleratedRestricted">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Επισπευσμένος Κλειστός Διαγωνισμός</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Accelerated Restricted</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:broader rdf:resource="&pc;Restricted"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/procurement/public-contracts#CompetitiveDialogue -->
-
-    <owl:NamedIndividual rdf:about="&pc;CompetitiveDialogue">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Με Διαπραγμάτευση, με προκήρυξη διαγωνισμού</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Competitive Dialogue</skos:prefLabel>
         <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://purl.org/procurement/public-contracts#Negotiated -->
+    <!-- http://linkedeconomy.org/resource/Currency/AUD -->
 
-    <owl:NamedIndividual rdf:about="&pc;Negotiated">
-        <rdf:type rdf:resource="&skos;Concept"/>
-        <skos:prefLabel xml:lang="el">Με Διαπραγμάτευση χωρίς προκήρυξη διαγωνισμού</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Negotiated</skos:prefLabel>
-        <skos:narrower rdf:resource="&pc;AcceleratedNegotiated"/>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/Currency/AUD">
+        <rdf:type rdf:resource="&ontology;Currency"/>
     </owl:NamedIndividual>
     
 
@@ -832,8 +743,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Ανοικτός Διαγωνισμός</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Open</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
     
 
@@ -859,9 +770,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Κλειστός Διαγωνισμός</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Restricted</skos:prefLabel>
-        <skos:narrower rdf:resource="&pc;AcceleratedRestricted"/>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
