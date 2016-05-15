@@ -2,7 +2,7 @@
 
 
 
-```
+```xml
 <http://linkedeconomy.org/resource/SpendingItem/CN6915_A14> a elod:SpendingItem ;
 	elod:buyer <http://linkedeconomy.org/resource/Organization/09_270_0_1> ;
 	elod:hasExpenditureLine <http://linkedeconomy.org/resource/ExpenditudeLine/CN6915_A14> ;
