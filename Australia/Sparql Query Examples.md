@@ -10,9 +10,10 @@ SELECT DISTINCT (COUNT(DISTINCT ?seller) AS ?sellerCount)
 (SUM(xsd:decimal(?amount)) AS ?totalAmount) ?city ?pCode
 FROM <http://linkedeconomy.org/Australia>
 WHERE {
-?payment elod:hasExpenditureLine ?expLine .
-?expLine elod:seller ?seller ;
-                elod:amount ?ups .
+?payment elod:hasRelatedContract ?contract .
+?contract elod:buyer ?buyer ;
+          elod:seller ?seller ;
+          pc:actualPrice ?ups . 
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:postal-code ?pCode ;
@@ -34,19 +35,19 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:buyer ?buyer ;
-            elod:seller ?seller ;
-            dcterms:issued ?issued ;
-            pc:estimatedEndDate ?endDate ;
-            pc:actualPrice ?ups ;   
-pc:item ?offering ;
-	pc:procedureType ?procType  ;
-            pc:startDate ?startDate .
+          elod:seller ?seller ;
+          dcterms:issued ?issued ;
+          pc:estimatedEndDate ?endDate ;
+          pc:actualPrice ?ups ;   
+          pc:item ?offering ;
+          pc:procedureType ?procType  ;
+          pc:startDate ?startDate .
 ?seller gr:name ?sellerName .
 OPTIONAL {
-?seller gr:vatID ?sellerId .
+    ?seller gr:vatID ?sellerId .
 } .
 ?buyer elod:hasSupervisorOrganization ?supervisor ;
-      elod:organizationId ?buyerId .
+       elod:organizationId ?buyerId .
 ?supervisor gr:legalName ?supervisorName .
 ?ups gr:hasCurrencyValue ?amount .
 ?procType skos:prefLabel ?procurementMethod .
@@ -68,8 +69,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:buyer ?buyer ;
-      	elod:seller ?seller ;
-            pc:actualPrice ?ups .  
+      	  elod:seller ?seller ;
+          pc:actualPrice ?ups .  
 ?buyer elod:hasSupervisorOrganization ?supervisor .
 ?ups gr:hasCurrencyValue ?amount .
 }
@@ -85,7 +86,7 @@ SELECT ?supervisorName (COUNT(DISTINCT ?buyer) AS ?buyerCount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE	{
 ?supervisor elod:isSupervisorOrganizationOf ?buyer ;
-      gr:legalName ?supervisorName .
+            gr:legalName ?supervisorName .
 }
 GROUP BY ?supervisorName
 ORDER BY DESC (?buyerCount)
@@ -102,7 +103,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ;
-                pc:actualPrice ?ups .  
+          elod:buyer ?buyer ;
+          pc:actualPrice ?ups .  
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
@@ -121,7 +123,8 @@ SELECT ?buyer ?supervisorName (COUNT(?contract) AS ?contractsCount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE{
 ?payment elod:hasRelatedContract ?contract .
-?contract elod:buyer ?buyer .
+?contract elod:buyer ?buyer ;
+          elod:seller ?seller .
 ?buyer elod:hasSupervisorOrganization ?supervisor .
 ?supervisor gr:legalName ?supervisorName .
 }
@@ -136,7 +139,8 @@ SELECT (COUNT(DISTINCT ?supervisor) AS ?supervisorrCount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE{
 ?payment elod:hasRelatedContract ?contract .
-?contract elod:buyer ?buyer .
+?contract elod:buyer ?buyer ;
+          elod:seller ?seller .
 ?buyer elod:hasSupervisorOrganization ?supervisor .
 }
 ```
@@ -150,7 +154,9 @@ SELECT (COUNT(DISTINCT ?contract) AS ?contractsCount) (xsd:decimal(SUM(?amount))
 FROM <http://linkedeconomy.org/Australia>
 WHERE	{
 ?payment elod:hasRelatedContract ?contract .
-?contract pc:actualPrice ?ups .
+?contract pc:actualPrice ?ups ;
+          elod:buyer ?buyer ;
+          elod:seller ?seller .
 ?ups gr:hasCurrencyValue ?amount .
 }
 ```
@@ -166,7 +172,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ;
-   pc:actualPrice ?ups .
+          elod:buyer ?buyer ;
+          pc:actualPrice ?ups .
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
@@ -200,7 +207,8 @@ SELECT (COUNT(DISTINCT ?seller) AS ?sellerCount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
-?contract elod:seller ?seller .
+?contract elod:seller ?seller ;
+          elod:buyer ?buyer .
 }
 ```
 
@@ -215,7 +223,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ;
-   pc:actualPrice ?ups .
+          elod:buyer ?buyer ;
+          pc:actualPrice ?ups .
 ?ups gr:hasCurrencyValue ?amount .
 ?seller gr:name ?sellerName .
 }
@@ -235,7 +244,9 @@ WHERE
 {
 ?payment elod:hasRelatedContract ?contract .
 ?contract pc:actualPrice ?ups ;
-               pc:procedureType ?procType .
+          elod:buyer ?buyer ;
+          elod:seller ?seller ;
+          pc:procedureType ?procType .
 ?ups gr:hasCurrencyValue ?amount .
 ?procType skos:prefLabel ?procurementMethod .
 FILTER(langMatches(lang(?procurementMethod), "el")) .
@@ -257,7 +268,8 @@ WHERE	{
                 gr:legalName ?supervisorName .
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:buyer ?buyer ;
-               pc:actualPrice ?ups ;
+          elod:seller ?seller ;
+          pc:actualPrice ?ups ;
    pc:procedureType ?procType .
 ?ups gr:hasCurrencyValue ?amount .
 ?procType skos:prefLabel ?procurementMethod .
@@ -279,8 +291,9 @@ WHERE
 {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ;
-                pc:procedureType ?procType ; 
-                pc:actualPrice  ?ups .
+	  elod:buyer ?buyer ;
+          pc:procedureType ?procType ; 
+          pc:actualPrice  ?ups .
 ?seller gr:vatID "50169561394"^^xsd:string .
 ?ups gr:hasCurrencyValue ?amount .
 ?procType skos:prefLabel ?procurementMethod .
@@ -313,8 +326,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ; 
-               elod:buyer ?buyer ;
-               pc:actualPrice ?ups .
+          elod:buyer ?buyer ;
+          pc:actualPrice ?ups .
 ?seller gr:vatID "50169561394"^^xsd:string .
 ?ups gr:hasCurrencyValue ?amount .
 ?buyer elod:hasSupervisorOrganization ?supervisor .
@@ -337,7 +350,8 @@ FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
 ?contract elod:seller ?seller ;
-                pc:actualPrice ?ups .
+          elod:buyer ?buyer ;
+          pc:actualPrice ?ups .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
 ?country skos:prefLabel ?countryName .
