@@ -1,7 +1,7 @@
 #Data model views
 
 ##Input data examples
-Input data extracts per data source can be found [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/Input%20Data%20Example.md).
+Input data extracts can be found [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/Input%20Data%20Example.md).
 ##Data model
 Australia ontology can be found [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/australia_ontology.owl). 
 Detailed List of classes and properties can be found [here](https://docs.google.com/spreadsheets/d/1xMiTAk7mXhGPnSU4-qspiYaN15ur4v3J0lU8qYODtzk/edit#gid=481927591).
