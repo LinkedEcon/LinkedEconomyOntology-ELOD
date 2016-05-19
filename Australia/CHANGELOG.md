@@ -6,7 +6,7 @@ All notable changes to the data model will be documented in this file.
 - Add Readme.md
 
 ### Changed
--  Changes were made to some of the queries of Sparql Query Examples.
+-  Changes were made to some of the queries of Sparql Query Examples.md.
 
 
 ## [1.0.0] - 2016-05-13
