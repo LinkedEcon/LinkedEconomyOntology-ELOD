@@ -17,7 +17,7 @@ WHERE {
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:postal-code ?pCode ;
-               vcard:locality ?city .
+         vcard:locality ?city .
 }
 GROUP BY ?city ?pCode
 ORDER BY DESC (?totalAmount)
@@ -270,7 +270,7 @@ WHERE	{
 ?contract elod:buyer ?buyer ;
           elod:seller ?seller ;
           pc:actualPrice ?ups ;
-   pc:procedureType ?procType .
+          pc:procedureType ?procType .
 ?ups gr:hasCurrencyValue ?amount .
 ?procType skos:prefLabel ?procurementMethod .
 FILTER(langMatches(lang(?procurementMethod), "el")) .
