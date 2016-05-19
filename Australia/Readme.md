@@ -5,7 +5,7 @@ Input data extracts per data source can be found [here](https://github.com/Linke
 ##Data model
 Australia ontology can be found [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/australia_ontology.owl). 
 Detailed List of classes and properties can be found [here](https://docs.google.com/spreadsheets/d/1xMiTAk7mXhGPnSU4-qspiYaN15ur4v3J0lU8qYODtzk/edit#gid=481927591).
-**Change log** is [here](https://github.com/YourDataStories/ontology/blob/master/Overall%20model/CHANGELOG.md).
+**Change log** is [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/CHANGELOG.md).
 
 ##RDF data examples
 Example [RDF specifications](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/Rdf%20Data%20Example.md) provide another view of the data.
