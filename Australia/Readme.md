@@ -1,5 +1,8 @@
 #Data model views
 
+##Data extraction process
+Input data is in csv format, the extraction process is automatically repeated at the beginning of each month from [Historical Australian Government Contract Data](http://data.gov.au/dataset/historical-australian-government-contract-data).
+
 ##Input data examples
 Input data extracts can be found [here](https://github.com/LinkedEcon/LinkedEconomyOntology-ELOD/blob/master/Australia/Input%20Data%20Example.md).
 ##Data model
