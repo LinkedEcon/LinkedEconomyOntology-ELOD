@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY gr "http://purl.org/goodrelations/v1#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY elod "http://linkedeconomy.org/ontology#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
+     xml:base="http://linkedeconomy.org/ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:elod="http://linkedeconomy.org/ontology#">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
+        <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <creator xml:lang="en">George Vafiadis</creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-05-30</owl:versionInfo>
+        <dc:title xml:lang="en">Linked Economy Ontology</dc:title>
+        <creator xml:lang="en">Michalis Vafopoulos</creator>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasAverage -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasAverage">
+        <rdfs:label xml:lang="en">has average</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει την στατιστική οντότητα elod:Statistic που σχετίζεται με ένα προϊόν με την κλάση elod:Average.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="http://linkedconomy.org/ontology#Average"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasCpv -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasCpv">
+        <rdfs:label xml:lang="en">has cpv</rdfs:label>
+        <rdfs:comment xml:lang="el">Τα προϊόντα που σχετίζονται με τους κωδικούς CPV. Αυτή η ιδιότητα συνδέει στιγμιότυπα της κλάσης gr:SomeItems με στιγμιότυπα της κλάσης που αναπαριστά την πληροφορία για τους κωδικούς CPV.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/SomeItems"/>
+        <rdfs:range rdf:resource="http://linkedconomy.org/ontology#CPV"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasMaxPriceLocation -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasMaxPriceLocation">
+        <rdfs:label xml:lang="en">has max price location</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει ένα στιγμιότυπο της κλάσης gr:Location, όπου είναι το κατάστημα που περιλαμβάνει την μέγιστη τιμή λιανικής ανά ποσότητα για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&gr;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasMinMaxPrice -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasMinMaxPrice">
+        <rdfs:label xml:lang="en">has min max price</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει την στατιστική οντότητα elod:Statistic που σχετίζεται με ένα προϊόν με την κλάση elod:PriceMinMax.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasMinPriceLocation -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasMinPriceLocation">
+        <rdfs:label xml:lang="en">has min price location</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει ένα στιγμιότυπο της κλάσης gr:Location, όπου είναι το κατάστημα που περιλαμβάνει την ελάχιστη τιμή λιανικής ανά ποσότητα για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&gr;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasPricePerUnit -->
+
+    <owl:ObjectProperty rdf:about="http://linkedconomy.org/ontology#hasPricePerUnit">
+        <rdfs:label xml:lang="en">has price per unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει την στατιστική οντότητα elod:Statistic που σχετίζεται με ένα προϊόν με την κλάση elod:PricePerUnit.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="http://linkedconomy.org/ontology#PricePerUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasProductCategory -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasProductCategory">
+        <rdfs:label xml:lang="en">has product category</rdfs:label>
+        <rdfs:comment xml:lang="el">Ορίζει τη σύνδεση ενός στιγμιότυπου  της κλάσης gr:SomeItems με στιγμιότυπα της κλάσης elod:ProductCategory όπου αναπαριστούν τις κατηγορίες των προϊόντων.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedconomy.org/ProductCategory"/>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/SomeItems"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#isStatisticOf -->
+
+    <owl:ObjectProperty rdf:about="&elod;isStatisticOf">
+        <rdfs:label xml:lang="en">is statistic of</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει το στιγμιότυπο ενός στατιστικού με την οντότητα στην οποία ανήκει.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://linkedconomy.org/SomeItems"/>
+                    <rdf:Description rdf:about="&gr;Offering"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#availableAtOrFrom -->
+
+    <owl:ObjectProperty rdf:about="&gr;availableAtOrFrom">
+        <rdfs:label xml:lang="en">available at or from</rdfs:label>
+        <rdfs:comment xml:lang="en">Η ιδιότητα αυτή ορίζει ότι μία συγκεκριμένη προσφορά gr:Offering είναι διαθέσιμη από ένα συφκεκριμένο σημείο πώλησης gr:Location.</rdfs:comment>
+        <rdfs:range rdf:resource="&gr;Location"/>
+        <rdfs:domain rdf:resource="&gr;Offering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasPOS -->
+
+    <owl:ObjectProperty rdf:about="&gr;hasPOS">
+        <rdfs:label xml:lang="en">has pos</rdfs:label>
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
+        <rdfs:range rdf:resource="&gr;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasPriceSpecification -->
+
+    <owl:ObjectProperty rdf:about="&gr;hasPriceSpecification">
+        <rdfs:label xml:lang="en">has price specification</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα συνδέει ένα στιγμιότυπο μιας προσφοράς gr:Offering με την οντότητα που καθορίζει την τιμή της gr:UnitPriceSpecification.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedconomy.org/UnitPriceSpecification"/>
+        <rdfs:domain rdf:resource="&gr;Offering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#includesObject -->
+
+    <owl:ObjectProperty rdf:about="&gr;includesObject">
+        <rdfs:label xml:lang="en">includes object</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει μία προσφορά gr:Offering με πολλαπλά στιγμιότυπα της κλάσης gr:TypeAndQuantityNode τα οποία ορίζουν τα στοιχεία που περιλαμβάνονται στη σχετική προσφορά για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedconomy.org/TypeAndQuantityNode"/>
+        <rdfs:domain rdf:resource="&gr;Offering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#typeOfGood -->
+
+    <owl:ObjectProperty rdf:about="&gr;typeOfGood">
+        <rdfs:label xml:lang="en">type of good</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ιδιότητα gr:typeOfGood συνδέει το στιγμιότυπο ενός προϊόντος με τα στοιχεία μιας προσφοράς που περιλαμβάνονται σε ένα στιγμιότυπο της κλάσης gr:TypeAndQuantityNode.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedconomy.org/SomeItems"/>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/TypeAndQuantityNode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedconomy.org/ontology#calculationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#calculationDate">
+        <rdfs:label xml:lang="en">calculation date</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ημερομηνία υπολογισμού των στατιστικών.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#categoryId -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#categoryId">
+        <rdfs:label xml:lang="en">category id</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή ορίζει τον κωδικό της κατηγορίας του προϊόντος(elod:ProductCategory).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ProductCategory"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#financialYear -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#financialYear">
+        <rdfs:label xml:lang="en">financial year</rdfs:label>
+        <rdfs:comment xml:lang="el">Το έτος για το οποίο έγινε ο υπολογισμός των στατιστικών.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="&xsd;gYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#hasMaxPricePerUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#hasMaxPricePerUnit">
+        <rdfs:label xml:lang="en">has max price per unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει την μέγιστη τιμή λιανικής ανά ποσότητα με βάση την μονάδα μέτρησης για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#pricePerUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#pricePerUnit">
+        <rdfs:label xml:lang="en">price per unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή χρησιμοποιείται για να ορίσει την τιμή ανά ποσότητα ενός προϊόντος με βάση τη μονάδα μέτρησης.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PricePerUnit"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#priceVariation -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedconomy.org/ontology#priceVariation">
+        <rdfs:label xml:lang="en">price variation</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή χρησιμοποιείται για να ορίσει την ποσοστιαία μεταβολή μέγιστης και ελάχιστης τιμής ανά ποσότητα ενός προϊόντος για το τρέχον έτος.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#averagePerUnit -->
+
+    <owl:DatatypeProperty rdf:about="&elod;averagePerUnit">
+        <rdfs:label xml:lang="en">average per unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει την μέση τιμή λιανικής ανά ποσότητα με βάση την μονάδα μέτρησης για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#Average"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasMinPricePerUnit -->
+
+    <owl:DatatypeProperty rdf:about="&elod;hasMinPricePerUnit">
+        <rdfs:label xml:lang="en">has min price per unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει την χαμηλότερη τιμή λιανικής ανά ποσότητα με βάση την μονάδα μέτρησης για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/Statistic"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#lastUpdatedMaxPrice -->
+
+    <owl:DatatypeProperty rdf:about="&elod;lastUpdatedMaxPrice">
+        <rdfs:label xml:lang="en">last updated max price</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει την ημερομηνία μέγιστης τιμής λιανικής ανά ποσότητα με βάση την μονάδα μέτρησης για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#lastUpdatedMinPrice -->
+
+    <owl:DatatypeProperty rdf:about="&elod;lastUpdatedMinPrice">
+        <rdfs:label xml:lang="en">last updated min price</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα ορίζει την ημερομηνία ελάχιστης τιμής λιανικής ανά ποσότητα με βάση την μονάδα μέτρησης για ένα συγκεκριμένο προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/ontology#PriceMinMax"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#productId -->
+
+    <owl:DatatypeProperty rdf:about="&elod;productId">
+        <rdfs:label xml:lang="en">product id</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ιδιότητα αυτή ορίζει τον κωδικό του προϊόντος όπως αυτό παρέχεται από την πηγή δεδομένων του e-prices.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/SomeItems"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#shopId -->
+
+    <owl:DatatypeProperty rdf:about="&elod;shopId">
+        <rdfs:label xml:lang="en">shop id</rdfs:label>
+        <rdfs:comment xml:lang="el">Συνδέει ένα στιγμιότυπο της κλάσης gr:Location με τον σχετικό κωδικό που παρέχεται από την πηγή δεδομένων του e-prices.</rdfs:comment>
+        <rdfs:domain rdf:resource="&gr;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#amountOfThisGood -->
+
+    <owl:DatatypeProperty rdf:about="&gr;amountOfThisGood">
+        <rdfs:label xml:lang="en">amount of this good</rdfs:label>
+        <rdfs:comment xml:lang="el">Η ποσότητα του αγαθού το οποίο περιλαμβάνεται σε μία προσφορά ενός καταστήματος. Η συγκεκριμένη ιδιότητα συνδέει την ποσότητα αυτή με την κλάση που αναπαριστά την συνολική περιγραφή για ένα προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/TypeAndQuantityNode"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#description -->
+
+    <owl:DatatypeProperty rdf:about="&gr;description">
+        <rdfs:label xml:lang="en">description</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα αποτελεί τη σύντομη περιγραφή μίας πηγής.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://linkedconomy.org/ProductCategory"/>
+                    <rdf:Description rdf:about="http://linkedconomy.org/SomeItems"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="&gr;hasCurrencyValue">
+        <rdfs:label xml:lang="en">has currency value</rdfs:label>
+        <rdfs:comment xml:lang="el">Ορίζει το ποσό που πωλείται ένα προϊόν από ένα συγκεκριμένο σημείο πώλησης.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasUnitOfMeasurement -->
+
+    <owl:DatatypeProperty rdf:about="&gr;hasUnitOfMeasurement">
+        <rdfs:label xml:lang="en">has unit of measurement</rdfs:label>
+        <rdfs:comment xml:lang="el">Η μονάδα μέτρησης(πχ κιλό, λίτρο) του αγαθού το οποίο περιλαμβάνεται σε μία προσφορά ενός καταστήματος. Η συγκεκριμένη ιδιότητα συνδέει τη μονάδα μέτρησης αυτή με την κλάση που αναπαριστά την συνολική περιγραφή για ένα προϊόν.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/TypeAndQuantityNode"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#legalName -->
+
+    <owl:DatatypeProperty rdf:about="&gr;legalName">
+        <rdfs:label xml:lang="en">legal name</rdfs:label>
+        <rdfs:comment xml:lang="el">Η νόμιμη επωνυμία μιας επιχείρησης gr:BusinessEntity ή gr:Brand.</rdfs:comment>
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#name -->
+
+    <owl:DatatypeProperty rdf:about="&gr;name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:comment xml:lang="el">Η συγκεκριμένη ιδιότητα αποτελεί μικρή περιγραφή μίας πηγής.</rdfs:comment>
+        <rdfs:domain rdf:resource="&gr;Location"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#validThrough -->
+
+    <owl:DatatypeProperty rdf:about="&gr;validThrough">
+        <rdfs:label xml:lang="en">valid through</rdfs:label>
+        <rdfs:comment xml:lang="el">Ορίζει την εγκυρότητα μιας προσφοράς gr:Offering με βάση την ημερομηνία που καθορίζει η επιχείρηση gr:BusinessEntity.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://linkedconomy.org/UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedconomy.org/ProductCategory -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/ProductCategory">
+        <rdfs:label xml:lang="en">Product Category</rdfs:label>
+        <rdfs:comment xml:lang="el">Κάθε στιγμιότυπο αυτής της κλάσης αναπαριστά την κατηγορία ενός προϊόντος.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/SomeItems -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/SomeItems">
+        <rdfs:label xml:lang="en">Some Items</rdfs:label>
+        <rdfs:comment xml:lang="el">Η κλάση αυτή αναπαριστά περιτώσεις μιας μαζικής παραγωγής προϊόντων. Ένα στιγμιότυπο αυτής της κλάσης για παράδειγμα μπορεί να αναπαριστά ένα σύνολο κινητών τηλεφώνων με συγκεκριμένο μοντέλο.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/Statistic -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/Statistic">
+        <rdfs:label xml:lang="en">Statistic</rdfs:label>
+        <rdfs:comment xml:lang="el">Το στιγμιότυπο της κλάσης αυτής περιλαμβάνει πληροφορία στατιστικών και ορίζεται από την οντότητα στην οποία ανήκει. Η οντότητα αυτή μπορεί να είναι είτε προσφορά, είτε προϊόν.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/TypeAndQuantityNode -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/TypeAndQuantityNode">
+        <rdfs:label xml:lang="en">Type and Quantity Node</rdfs:label>
+        <rdfs:comment xml:lang="el">Η κατηγορία αυτή περιλαμβάνει όλη την πληροφορία για ένα προϊόν, όπως το είδος του προϊόντος, την ποσότητά του καθώς και την  μονάδα μέτρησής του.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/UnitPriceSpecification -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/UnitPriceSpecification">
+        <rdfs:label xml:lang="en">Unit Price Specification</rdfs:label>
+        <rdfs:comment xml:lang="el">Είναι η εννοιολογική οντότητα που καθορίζει την συνολική πληροφορία της τιμής που ζητείται για ένα προϊόν.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#Average -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/ontology#Average">
+        <rdfs:label xml:lang="en">Average</rdfs:label>
+        <rdfs:comment xml:lang="el">Αναπαριστά τη συνολική πληροφορία της Μέσης τιμής για την τιμή ενός προϊόντος για ένα συγκεκριμένο έτος.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#CPV -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/ontology#CPV">
+        <rdfs:label xml:lang="en">CPV</rdfs:label>
+        <rdfs:comment xml:lang="el">Κάθε στιγμιότυπο της κλάσης αυτής αναπαριστά την κατηγορία που ανήκει ένα προϊόν με βάση το κοινό λεξιλόγιο για τις δημόσιες συμβάσεις(CPV).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#PriceMinMax -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/ontology#PriceMinMax">
+        <rdfs:label xml:lang="en">Price Min Max</rdfs:label>
+        <rdfs:comment xml:lang="el">Αναπαριστά τη συνολική πληροφορία της μέγιστης και της ελάχιστης τιμής ενός προϊόντος για ένα συγκεκριμένο έτος.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedconomy.org/ontology#PricePerUnit -->
+
+    <owl:Class rdf:about="http://linkedconomy.org/ontology#PricePerUnit">
+        <rdfs:label xml:lang="en">Price per Unit</rdfs:label>
+        <rdfs:comment xml:lang="el">Αναπαριστά τη συνολική πληροφορία της τιμής ανά ποσότητα με βάση τη μονάδα μέτρησης.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#BusinessEntity -->
+
+    <owl:Class rdf:about="&gr;BusinessEntity">
+        <rdfs:label xml:lang="en">Business Entity</rdfs:label>
+        <rdfs:comment xml:lang="el">Το στιγμιότυπο αυτής της κλάσης αποτελεί την επιχείρηση η οποία κάνει μία συγκεκριμένη προσφορά gr:Offering.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#Location -->
+
+    <owl:Class rdf:about="&gr;Location">
+        <rdfs:label xml:lang="en">Location</rdfs:label>
+        <rdfs:comment xml:lang="el">Στιγμιότυπο αυτής της κλάσης είναι ένα σημείο, περιοχή ή κατάστημα όπου είναι διαθέσιμο ένα συφκεκριμένο προϊόν. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#Offering -->
+
+    <owl:Class rdf:about="&gr;Offering">
+        <rdfs:label xml:lang="en">Offering</rdfs:label>
+        <rdfs:comment xml:lang="el">Η προσφορά αντιπροσωπεύει ένα συγκεκριμένο προϊόν το οποίο παρέχεται από μία εταιρία με συγκεκριμένα χαρακτηριστικά ώς προς την πώλησή του.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
