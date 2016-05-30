@@ -3,6 +3,8 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
     <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
     <!ENTITY gr "http://purl.org/goodrelations/v1#" >
@@ -17,7 +19,9 @@
 
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
@@ -27,7 +31,14 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:gr="http://purl.org/goodrelations/v1#"
      xmlns:elod="http://linkedeconomy.org/ontology#">
-    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology#"/>
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
+    <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <creator xml:lang="en">George Vafiadis</creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-05-30</owl:versionInfo>
+        <dc:title xml:lang="en">Linked Economy Ontology</dc:title>
+        <creator xml:lang="en">Michalis Vafopoulos</creator>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
     
 
 
