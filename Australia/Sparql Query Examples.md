@@ -6,6 +6,7 @@
 ```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
 SELECT DISTINCT (COUNT(DISTINCT ?seller) AS ?sellerCount)
 (SUM(xsd:decimal(?amount)) AS ?totalAmount) ?city ?pCode
 FROM <http://linkedeconomy.org/Australia>
@@ -96,9 +97,10 @@ ORDER BY DESC (?buyerCount)
 ```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
 SELECT (COUNT(DISTINCT ?seller) AS ?sellerCount)
-(SUM(xsd:decimal(?amount)) AS ?totalAmount) ?countryName
+(SUM(xsd:decimal(?amount)) AS ?totalAmount) ?country
 FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
@@ -108,17 +110,16 @@ WHERE {
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
-?country skos:prefLabel ?countryName .
-FILTER (langMatches(lang(?countryName), "el")) .
+FILTER (langMatches(lang(?country), "el")) .
 }
-GROUP BY ?countryName
+GROUP BY ?country
 ORDER BY DESC (?totalAmount)
 ```
 
 ### Q6. Buyer contract count with supervisor name
 ```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
-PREFIX pc: <http://purl.org/procurement/public-contracts#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
 SELECT ?buyer ?supervisorName (COUNT(?contract) AS ?contractsCount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE{
@@ -166,8 +167,8 @@ WHERE	{
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX pc: <http://purl.org/procurement/public-contracts#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-SELECT DISTINCT ?countryNameGr ?countryNameEn
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+SELECT DISTINCT ?country
 FROM <http://linkedeconomy.org/Australia>
 WHERE {
 ?payment elod:hasRelatedContract ?contract .
@@ -177,12 +178,9 @@ WHERE {
 ?ups gr:hasCurrencyValue ?amount .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
-?country skos:prefLabel ?countryNameGr .
-?country skos:prefLabel ?countryNameEn .
-FILTER(langMatches(lang(?countryNameGr), "el")) .
-FILTER(langMatches(lang(?countryNameEn), "en")) .
+FILTER(langMatches(lang(?country), "en")) .
 }
-ORDER BY DESC (?countryNameGr)
+ORDER BY DESC (?country)
 ```
 
 ### Q10. Payments count and their total amount
@@ -201,7 +199,6 @@ WHERE
 
 ### Q11. Sellers count
 ```
-PREFIX gr: <http://purl.org/goodrelations/v1#>
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 SELECT (COUNT(DISTINCT ?seller) AS ?sellerCount)
 FROM <http://linkedeconomy.org/Australia>
@@ -344,7 +341,6 @@ PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX pc: <http://purl.org/procurement/public-contracts#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT DISTINCT ?seller (COUNT(DISTINCT ?contract) AS ?contractsCount) (xsd:decimal(SUM(?amount)) AS ?totalAmount)
 FROM <http://linkedeconomy.org/Australia>
 WHERE {
@@ -354,10 +350,9 @@ WHERE {
           pc:actualPrice ?ups .
 ?seller vcard:hasAddress ?address .
 ?address vcard:country-name ?country .
-?country skos:prefLabel ?countryName .
 ?ups gr:hasCurrencyValue ?amount .
-FILTER(CONTAINS(str(?countryName), "Greece")) .
+FILTER(CONTAINS(str(?country), "Greece")) .
 }
-GROUP BY ?seller ?countryName
+GROUP BY ?seller 
 ORDER BY DESC (?totalAmount)
 ```
