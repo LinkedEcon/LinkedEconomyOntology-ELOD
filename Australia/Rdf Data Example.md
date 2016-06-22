@@ -21,10 +21,7 @@
 		
 	<http://linkedeconomy.org/resource/Address/09_270_0_1> a vcard:Address ;
 		vcard:postal-code "2608"^^xsd:string ;
-		vcard:country-name <http://linkedeconomy.org/resource/AU> .
-
-	<http://linkedeconomy.org/resource/AU> a skos:Concept, elodGeo:Country;
-		skos:prefLabel "Αυστραλία"@el, "Australia"@en .
+		vcard:country-name "Αυστραλία"@el, "Australia"@en .
 
 <http://linkedeconomy.org/resource/ExpenditudeLine/CN6915_A14> a elod:ExpenditureLine;
 	elod:amount <http://linkedeconomy.org/resource/UnitPriceSpecification/CN6915-A14> ;
@@ -48,7 +45,7 @@
 			vcard:street-address "LEVEL 3, 2 BARRY DRIVE"^^xsd:string ;
 			vcard:postal-code "2601"^^xsd:string ;
 			vcard:locality "CANBERRA"^^xsd:string ;
-			vcard:country-name <http://linkedeconomy.org/resource/AU> .
+			vcard:country-name "Αυστραλία"@el, "Australia"@en .
 
 <http://linkedeconomy.org/resource/Contract/CN6915_A14> a pc:Contract;
 	elod:seller <http://linkedeconomy.org/resource/Organization/18002855085> ;
@@ -88,7 +85,7 @@
 			skos:hasTopConcept pc:Prequalified .
 
 	<http://linkedeconomy.org/resource/Person/CN6915_A14> a foaf:Person ;
-		foaf:personPhone "02 621 66301"^^xsd:string ;					
-		foaf:personName "ANTHONY MARCHESE"^^xsd:string .
+		foaf:phone "02 621 66301"^^xsd:string ;					
+		foaf:name "ANTHONY MARCHESE"^^xsd:string .
 
 ```
