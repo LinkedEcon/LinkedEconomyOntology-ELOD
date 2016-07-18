@@ -30,7 +30,7 @@
         <creator xml:lang="en">Aggelos Tzani</creator>
         <creator xml:lang="en">Gerasimos Razis</creator>
         <creator xml:lang="en">Mixalis Vafopoulos</creator>
-        <owl:versionInfo xml:lang="en">Latest Update: 2016-05-13</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-07-18</owl:versionInfo>
         <dc:title xml:lang="en">Linked Economy Ontology (Australia)</dc:title>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
     </owl:Ontology>
@@ -236,8 +236,41 @@
         </rdfs:domain>
     </owl:ObjectProperty>
     
+    
+    
+    <!-- http://linkedeconomy.org/ontology#isRegisteredAt -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isRegisteredAt">
+        <rdfs:domain rdf:about="http://linkedeconomy.org/geoOntology#Country">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+   </owl:ObjectProperty>
+   
+   
+   
+    <!-- http://linkedeconomy.org/ontology#hasVatType -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasVatType">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+   </owl:ObjectProperty>
 
 
+    
     <!-- http://linkedeconomy.org/ontology#seller -->
 
     <owl:ObjectProperty rdf:about="&ontology;seller">
@@ -571,9 +604,9 @@
     
 
 
-    <!-- http://publicspending.net/geoOntology#Country -->
+    <!-- http://linkedeconomy.org/geoOntology#Country -->
 
-    <owl:Class rdf:about="http://publicspending.net/geoOntology#Country">
+    <owl:Class rdf:about="http://linkedeconomy.org/geoOntology#Country">
         <rdfs:label xml:lang="el">Χώρα</rdfs:label>
         <rdfs:label xml:lang="en">Country</rdfs:label>
         <rdfs:subClassOf rdf:resource="&skos;Concept"/>
