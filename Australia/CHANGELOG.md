@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [2.1.1] - 2016-07-18
+### Added
+- Add property elod:isRegisteredAt .
+- Add property elod:hasVatType .
+
+### Changed
+- Changes were made at "Cookbook Australia.docx", "Rdf Data Examples.md", "australia_ontology.owl"  .
+
+
 ## [1.1.1] - 2016-06-22
 ### Changed
 - Changes were made to some of the queries of "Sparql Query Examples.md" .
