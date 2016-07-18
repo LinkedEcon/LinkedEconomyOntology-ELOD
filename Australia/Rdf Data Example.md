@@ -11,6 +11,8 @@
 <http://linkedeconomy.org/resource/Organization/09_270_0_1> a foaf:Organization, gr:BusinessEntity, org:Organization,  rov:RegisteredOrganization ;
 	elod:hasSupervisorOrganization <http://linkedeconomy.org/resource/Organization/014> ;
 	vcard:hasAddress <http://linkedeconomy.org/resource/Address/09_270_0_1> ;
+	elod:isRegisteredAt <http://linkedeconomy.org/resource/Country/AU> ;
+	elod:hasVatType <http://linkedeconomy.org/resource/VatType/AU> ;
 	elod:organizationId "09_270_0_1"^^xsd:string ;
 	elod:division "CORPORATE PROCUREMENT"^^xsd:string ;
 	elod:branch "PROCUREMENT SERVICES TECHNOLOGY"^^xsd:string .
@@ -39,6 +41,8 @@
 	<http://linkedeconomy.org/resource/Organization/18002855085> a foaf:Organization, gr:BusinessEntity, org:Organization, rov:RegisteredOrganization ;
 		gr:name "HP ENTERPRISE SERVICES AYSTRALIA PTY LTD"^^xsd:string ;
 		vcard:hasAddress <http://linkedeconomy.org/resource/Address/18002855085> ;
+		elod:isRegisteredAt <http://linkedeconomy.org/resource/Country/AU> ;
+		elod:hasVatType <http://linkedeconomy.org/resource/VatType/AU> ;
 		gr:vatID "18002855085"^^xsd"string .
 
 		<http://linkedeconomy.org/resource/Address/18002855085> a vcard:Address ;
